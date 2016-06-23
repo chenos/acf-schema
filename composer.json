@@ -1,9 +1,12 @@
 {
-    "name": "solutionworks/acf-schema",
+    "name": "chenos/acf-schema",
     "description": "acf schema",
     "version": "0.0.1",
     "require": {
         "php": ">=5.5.9"
+    },
+    "config": {
+        "preferred-install": "dist"
     },
     "autoload": {
         "psr-4": { "Swp\\Schema\\": "src" }

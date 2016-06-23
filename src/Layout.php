@@ -1,5 +1,5 @@
 <?php 
-namespace Swp/Schema;
+namespace Swp\Schema;
 
 class Layout {
   public $keys = array();
