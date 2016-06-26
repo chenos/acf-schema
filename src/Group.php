@@ -31,6 +31,12 @@ class Group {
     $locations = array();
     foreach ($args as $arg) {
       list($param, $operator, $value) = $arg;
+      if ($param == 'page_template' and $value != 'default') {
+        $path = theme_config( 'theme.templates' ) . '/' . $value;
+        if ( file_exists( theme_path( $path ) ) ) {
+          $value = $path;
+        }
+      }
       $location['param'] = $param;
       $location['operator'] = $operator;
       $location['value'] = $value;
