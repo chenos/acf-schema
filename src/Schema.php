@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Swp\Schema;
 
 class Schema {
@@ -30,15 +30,16 @@ class Schema {
 
   public static function getFieldGroup( $slug ) {
     global $wpdb;
-    $IDs = $wpdb->get_results( "select ID from {$wpdb->posts} 
-      where post_type = 'acf-field-group' 
-      and post_title='{$slug}' 
+    $IDs = $wpdb->get_results( "select ID from {$wpdb->posts}
+      where post_type = 'acf-field-group'
+      and post_title='{$slug}'
       and post_status = 'publish'" );
     return $IDs;
   }
 
   public static function exists($slug) {
-    return ! empty( static::getFieldGroup( $slug ) );
+    $group = static::getFieldGroup( $slug );
+    return ! empty( $group );
   }
 
 }
