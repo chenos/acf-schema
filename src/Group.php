@@ -6,6 +6,7 @@ class Group {
   public $container;
 
   public function __construct( $title ) {
+    $this->container['ID'] = false;
     $this->container['key'] = uniqid('group_');
     $this->container['title'] = $title;
     $this->container['menu_order'] = 0;
