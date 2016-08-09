@@ -1,7 +1,6 @@
 {
     "name": "solutionworks/acf-schema",
     "description": "acf schema",
-    "version": "0.0.1",
     "require": {
         "php": ">=5.5.9"
     },
