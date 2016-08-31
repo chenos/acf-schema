@@ -1,5 +1,5 @@
 {
-    "name": "solutionworks/acf-schema",
+    "name": "wpsw/acf-schema",
     "description": "acf schema",
     "require": {
         "php": ">=5.5.9"
@@ -8,6 +8,6 @@
         "preferred-install": "dist"
     },
     "autoload": {
-        "psr-4": { "Swp\\Schema\\": "src" }
+        "psr-4": { "WPSW\\Schema\\": "src" }
     }
 }

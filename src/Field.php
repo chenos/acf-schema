@@ -1,5 +1,5 @@
 <?php 
-namespace Swp\Schema;
+namespace WPSW\Schema;
 
 class Field {
 
