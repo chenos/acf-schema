@@ -1,5 +1,5 @@
 <?php 
-namespace WPSW\Schema;
+namespace WPSW\ACF;
 
 class Group {
 
@@ -33,8 +33,7 @@ class Group {
     foreach ($args as $arg) {
       list($param, $operator, $value) = $arg;
       if ($param == 'page_template' and $value != 'default') {
-        $path = theme_config( 'theme.templates' ) . '/' . $value;
-        if ( file_exists( theme_path( $path ) ) ) {
+        if ( file_exists( wpsw_get_path( $path = 'src/pages/' . $value ) ) ) {
           $value = $path;
         }
       }
@@ -68,6 +67,12 @@ class Group {
   }
 
   public function hide_on_screen($screen) {
+    if ( is_string( $screen ) ) {
+      $screen = array( $screen );
+    }
+    if ( func_num_args() !== 1 ) {
+      $screen = func_get_args();
+    }
     $this->container['hide_on_screen'] = $screen;
     return $this;
   }

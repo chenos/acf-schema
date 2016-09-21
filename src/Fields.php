@@ -1,5 +1,5 @@
 <?php 
-namespace WPSW\Schema;
+namespace WPSW\ACF;
 
 class Fields {
 
@@ -17,7 +17,12 @@ class Fields {
     $args = func_get_args();
     $callback = array_pop( $args );
     $field = new Field( 'repeater', $args, $this->parent );
+    $field->layout('row');
     return $this->fields[] = $field->sub_fields( $callback );
+  }
+
+  public function flex() {
+    return call_user_func_array( array( $this, 'flexible_content' ), func_get_args() );
   }
 
   public function flexible_content() {

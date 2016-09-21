@@ -1,5 +1,5 @@
 <?php 
-namespace WPSW\Schema;
+namespace WPSW\ACF;
 
 class Field {
 
@@ -55,6 +55,13 @@ class Field {
         # code...
         break;
     }
+
+    if (!isset($container['label'])) {
+      $container['label'] = ucwords( str_replace('_', ' ', $container['name'] ) );
+    }
+
+    $container['label'] = ucwords( str_replace('_', ' ', $container['label'] ) );
+    //pc($container['label'], 'container label');
 
     $this->container = acf_prepare_field( acf_get_valid_field($container) );
     unset($this->container['parent']);

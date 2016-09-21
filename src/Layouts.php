@@ -1,5 +1,5 @@
 <?php 
-namespace WPSW\Schema;
+namespace WPSW\ACF;
 
 class Layouts {
 

@@ -1,11 +1,13 @@
 <?php
-namespace WPSW\Schema;
+namespace WPSW\ACF;
 
 class Schema {
 
   public static $force = true;
 
   public static function create($slug, $callback) {
+    $slugs = explode( '\\', $slug );
+    $slug = array_pop( $slugs );
     if ( static::$force ) {
       static::deleteFieldGroup( $slug );
     }
