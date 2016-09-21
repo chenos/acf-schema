@@ -1,7 +1,7 @@
 {
     "name": "wpsw/acf-schema",
     "description": "acf schema",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "scripts": {
         "publish": "cd ../ && rm -rf tmp-acf-schema && git clone --single-branch --depth=1 git@github.com:chenos/acf-schema.git tmp-acf-schema && cd tmp-acf-schema && git rm -r ./* && cp -rf ../acf-schema/* ./ && git add . && git commit -m Updates && git push -f origin master"
     },
