@@ -19,7 +19,16 @@
 }
 ```
 
+
 ## Example
+
+`functions.php`
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+```
+
+`index.php`
 
 ```php
 use \WPSW\ACF\Schema;
