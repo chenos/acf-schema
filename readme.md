@@ -1,4 +1,25 @@
-# Example
+## composer.json
+
+```json
+{
+    "name": "package/name",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:chenos/acf-schema.git"
+        }
+    ],
+    "require": {
+        "wpsw/acf-schema": "dev-master"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "secure-http": false
+    }
+}
+```
+
+## Example
 
 ```php
 use \WPSW\ACF\Schema;
