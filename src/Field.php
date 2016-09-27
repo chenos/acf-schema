@@ -97,5 +97,7 @@ class Field {
     if ($name === 'default') {
       return $this->default_value(array_shift($args));
     }
+    $this->container[$name] = array_shift($args);
+    return $this;
   }
 }
