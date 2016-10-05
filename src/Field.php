@@ -74,6 +74,7 @@ class Field {
 
   public function post_type() {
     $this->container['post_type'] = func_get_args();
+    return $this;
   }
 
   public function layout($layout) {
