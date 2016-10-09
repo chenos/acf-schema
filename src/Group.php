@@ -32,13 +32,6 @@ class Group {
     $locations = array();
     foreach ($args as $arg) {
       list($param, $operator, $value) = $arg;
-      if (function_exists('wpsw_get_path')) {
-        if ($param == 'page_template' and $value != 'default') {
-          if ( file_exists( wpsw_get_path( $path = 'src/pages/' . $value ) ) ) {
-            $value = $path;
-          }
-        }
-      }
       $location['param'] = $param;
       $location['operator'] = $operator;
       $location['value'] = $value;
