@@ -18,6 +18,7 @@ class Group {
   }
 
   public function __call($name, $args) {
+    $this->container[$name] = array_shift($args);
     return $this;
   }
 
@@ -32,32 +33,15 @@ class Group {
     $locations = array();
     foreach ($args as $arg) {
       list($param, $operator, $value) = $arg;
+      if ($param == 'page_template' and $value == 'Default') {
+        $value = 'default';
+      }
       $location['param'] = $param;
       $location['operator'] = $operator;
       $location['value'] = $value;
       $locations[] = $location;
     }
     $this->container['location'][] = $locations;
-    return $this;
-  }
-
-  public function position($position) {
-    $this->container['position'] = $position;
-    return $this;
-  }
-
-  public function style($style) {
-    $this->container['style'] = $style;
-    return $this;
-  }
-
-  public function label_placement($placement) {
-    $this->container['label_placement'] = $placement;
-    return $this;
-  }
-
-  public function instruction_placement($placement) {
-    $this->container['instruction_placement'] = $placement;
     return $this;
   }
 
