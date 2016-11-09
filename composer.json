@@ -12,6 +12,6 @@
         "preferred-install": "dist"
     },
     "autoload": {
-        "psr-4": { "WPSW\\ACF\\": "src" }
+        "psr-4": { "Yare\\ACF\\": "src" }
     }
 }

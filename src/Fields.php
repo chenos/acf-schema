@@ -1,39 +1,32 @@
 <?php 
-namespace WPSW\ACF;
+namespace Yare\ACF;
 
-class Fields {
+class Fields
+{
+    protected $fields = array();
 
-  public function __construct( $parent = null ) {
-    $this->parent = $parent;
-  }
+    // group or field
+    protected $parent;
 
-  public function getAll() {
-    return array_map( function( $field ) {
-      return $field->container;
-    }, $this->fields );
-  }
+    public function __construct($parent)
+    {
+        $this->parent = $parent;
+    }
 
-  public function repeater() {
-    $args = func_get_args();
-    $callback = array_pop( $args );
-    $field = new Field( 'repeater', $args, $this->parent );
-    $field->layout('row');
-    return $this->fields[] = $field->sub_fields( $callback );
-  }
+    public function __call($name, $args)
+    {
+        $field = new Field($name, $args, $this->parent);
+        return $this->fields[] = $field;
+    }
 
-  public function flex() {
-    return call_user_func_array( array( $this, 'flexible_content' ), func_get_args() );
-  }
+    public function data()
+    {
+        return array_map(array($this, 'field_settings'), $this->fields);
+    }
 
-  public function flexible_content() {
-    $args = func_get_args();
-    $callback = array_pop( $args );
-    $field = new Field( 'flexible_content', $args, $this->parent );
-    return $this->fields[] = $field->layouts( $callback );
-  }
-
-  public function __call( $name, $args ) {
-    return $this->fields[] = new Field( $name, $args, $this->parent );
-  }
+    protected function field_settings($field)
+    {
+        return $field->settings();
+    }
 
 }

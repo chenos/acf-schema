@@ -1,23 +1,34 @@
 <?php 
-namespace WPSW\ACF;
+namespace Yare\ACF;
 
-class Layouts {
+class Layouts
+{
 
-  public $layouts;
+    protected $layouts = array();
 
-  public function getAll() {
-    return array_map( function( $layout ) {
-      return $layout->keys;
-    }, $this->layouts );
-  }
+    // field
+    protected $parent;
 
-  public function layout() {
-    $args = func_get_args();
-    $callback = array_pop( $args );
-    call_user_func( $callback, $fields = new Fields() );
-    $arguments['name'] = array_shift($args);
-    $arguments['label'] = count($args) ? array_shift($args) : $arguments['name'];
-    $layout = new Layout($arguments);
-    return $this->layouts[] = $layout->sub_fields($fields->getAll());
-  }
+    public function __construct($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    public function add()
+    {
+        $args = func_get_args();
+        $layout = new Layout($args, $this->parent);
+        return $this->layouts[] = $layout;
+    }
+
+    public function data()
+    {
+        return array_map(array($this, 'layout_settings'), $this->layouts);
+    }
+
+    protected function layout_settings($layout)
+    {
+        return $layout->settings();
+    }
+
 }
