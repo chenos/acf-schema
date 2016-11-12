@@ -139,7 +139,7 @@ class Group
 
     public function register()
     {
-        $this->destroy();
+        acf_delete_field_group($this->key);
         if ($this->local) {
             acf_add_local_field_group($this->settings);
         } else {
@@ -147,9 +147,10 @@ class Group
         }
     }
 
-    public function destroy()
+    public static function destroy($title)
     {
-        acf_delete_field_group($this->key);
+        $key = 'group_' . substr(md5("yare_$title"), 0, 13);
+        acf_delete_field_group($key);
     }
 
     protected function prepare_field($field)
